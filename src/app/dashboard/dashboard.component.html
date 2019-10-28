@@ -1,7 +1,9 @@
+
+
 <mat-toolbar color="primary">
         <mat-toolbar-row class="flex-container">
             <div style="flex-grow: 1; padding-left:16px;">
-                <span>Dashboard</span>
+                <app-header></app-header>
             </div>
             <div style="flex-grow: 10; text-align:right;">
                 <span class="example-fill-remaining-space"></span>
@@ -26,4 +28,15 @@
         </button>
         </mat-menu>
     </mat-toolbar-row>
+    
+    
 </mat-toolbar>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+    (closed)="events.push('close!')">
+    Sidenav content
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+    </mat-sidenav-content>
+</mat-sidenav-container>
