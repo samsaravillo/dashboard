@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { SideNavigationComponent } from './dashboard/side-navigation/side-navigation.component';
+import { HomeComponent } from './dashboard/home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SideNavigationComponent } from './dashboard/side-navigation/side-naviga
     LoginComponent,
     DashboardComponent,
     HeaderComponent,
-    SideNavigationComponent
+    SideNavigationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
