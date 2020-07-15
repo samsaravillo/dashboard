@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from './../../api.service';
 import { Smartphone } from './../../api.interface';
+import { Subscription } from 'rxjs';
 
 export interface PeriodicElement {
   name: string;
@@ -29,41 +30,47 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription = new Subscription();
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private apiService: ApiService) {}
-
+  // dataSource:any = [];
+  teamdisplayedColumns: string[] = ['id', 'abbreviation', 'full_name', 'city', 'conference', 'division'];
+  teams:any = []; 
   smartphone: Smartphone[] = [];
   headers = [];
-  x = 'sample';
-  teams; 
+
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() { 
     this.getTeamsDetails();
     this.getSmartphones();
   }
+
+  ngOnDestroy() {
+
+  }
   
   getTeamsDetails() { 
-    this.apiService.getAllTeams().subscribe(data => {
-      console.log(data);
-      return this.teams = data;
-    })
+    this.subscriptions.add(this.apiService.getAllTeams().subscribe(data => {
+      this.teams = data['data'];
+      console.log('teams', this.teams);
+      return data;
+    }));
   }
 
   getSmartphones() {
-    this.apiService.getSmartphone()
+    this.subscriptions.add(this.apiService.getSmartphone()
       .subscribe(data => {
-        console.log(data);
         const keys = data.headers.keys();
         this.headers = keys.map(key => `${key}: ${data.headers.get(key)}`);
         for (const d of data.body) {
           this.smartphone.push(d);
         }
         console.log(JSON.stringify(this.smartphone));
-      });
+      }));
   }
 
 }
