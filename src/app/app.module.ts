@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { CoursesService } from "./dashboard/courses/courses.service";
+import { AuthorsService } from "./dashboard/authors/authors.service";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -22,7 +23,7 @@ import { CoursesService } from "./dashboard/courses/courses.service";
     FormsModule,
     DashboardModule,
   ],
-  providers: [CoursesService],
+  providers: [CoursesService, AuthorsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

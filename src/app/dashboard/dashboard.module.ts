@@ -11,6 +11,7 @@ import { ProductAddComponent } from "../dashboard/products/product-add/product-a
 import { ProductEditComponent } from "../dashboard/products/product-edit/product-edit.component";
 import { HomeComponent } from "./home/home.component";
 import { CoursesComponent } from "./courses/courses.component";
+import { AuthorsComponent } from './authors/authors.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CoursesComponent } from "./courses/courses.component";
     ProductAddComponent,
     ProductEditComponent,
     CoursesComponent,
+    AuthorsComponent,
   ],
   imports: [CommonModule, RouterModule, CustomMaterialModule],
   exports: [DashboardComponent],
