@@ -9,6 +9,7 @@ import { LoginComponent } from "./login/login.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 import { DashboardModule } from "./dashboard/dashboard.module";
+import { CoursesService } from "./dashboard/courses/courses.service";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -21,7 +22,7 @@ import { DashboardModule } from "./dashboard/dashboard.module";
     FormsModule,
     DashboardModule,
   ],
-  providers: [],
+  providers: [CoursesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
